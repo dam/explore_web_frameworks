@@ -1,0 +1,28 @@
+# I:w
+gnore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore rbenv local
+/.ruby-version
+# Ignore redis dumps
+/dump.rdb
+
+# ignore secret config
+/config/application.yml
+
+# ignore code coverage reports
+/coverage
+
+.DS_Store
+
+# Dependency directory for .d.ts files
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
