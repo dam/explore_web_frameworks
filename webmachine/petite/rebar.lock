@@ -1,0 +1,13 @@
+[{<<"meck">>,
+  {git,"https://github.com/eproxus/meck.git",
+       {ref,"f6f885c484702b0c43ef13adbb9067106a5b39ff"}},
+  1},
+ {<<"mochiweb">>,{pkg,<<"mochiweb">>,<<"2.12.2">>},1},
+ {<<"mustache">>,
+  {git,"git://github.com/mojombo/mustache.erl.git",
+       {ref,"031c7aa302810424c198aa003aa8cf090150b555"}},
+  0},
+ {<<"webmachine">>,
+  {git,"git://github.com/webmachine/webmachine",
+       {ref,"30f2386b008b41c07fd4a0274a9846a4020a074d"}},
+  0}].
