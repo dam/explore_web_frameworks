@@ -2,8 +2,9 @@
 -export([init/1,
 	 to_html/2,
 	 content_types_provided/2,
+         generate_etag/2,
 	 to_text/2,
-	 to_json/2
+	 to_json/2      
 ]).
 
 -include_lib("webmachine/include/webmachine.hrl").
@@ -31,6 +32,10 @@ content_types_provided(ReqData, State) ->
     {[{"text/html", to_html},
       {"text/plain", to_text},
       {"application/json", to_json}],ReqData, State}.
+
+generate_etag(ReqData, State) ->
+    {ok, N} = petite_url_srv:get_last_id(),
+    {integer_to_list(N), ReqData, State}.
 
 to_text(ReqData, State) ->
     {ok, LatestLinks} = petite_url_srv:get_latest(20),

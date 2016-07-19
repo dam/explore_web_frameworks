@@ -4,7 +4,8 @@
 -export([start_link/0,
 	 get_url/1,
 	 put_url/1,
-         get_latest/1]).
+         get_latest/1,
+	 get_last_id/0]).
 
 -behaviour(gen_server).
 -export([init/1,
@@ -32,6 +33,9 @@ put_url(Url) ->
 
 get_latest(Count) ->
     gen_server:call(?SERVER, {get_latest, Count}).
+
+get_last_id() ->
+    gen_server:call(?SERVER, get_last_id).
 
 %% Gen server implementation
 
@@ -64,8 +68,11 @@ handle_call({get_latest, Count}, _From, State = #st{next=N}) ->
 			       Record
                        end, Ids),
     {reply, {ok, Result}, State};
+handle_call(get_last_id, _From, State = #st{next=N}) ->
+    {reply, {ok, N - 1}, State};
 handle_call(_Request, _From, State) ->
     {stop, unknown_call, State}.
+
 
 handle_cast(_Request, State) ->
     {stop, unknown_cast, State}.
